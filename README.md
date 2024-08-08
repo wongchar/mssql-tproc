@@ -290,6 +290,7 @@ mkdir /mnt/db1
 Change directory ownership so MSSQL can edit filesystem
 ```
 chown 10001:10001 /mnt/db1
+```
 
 Update the tpc-db.yaml file found under the mysql directory to reflect your setup. \
 Ensure the yaml file reflects your NIC physical function name under the NetworkAttachmentDefinition:
