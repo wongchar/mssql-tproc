@@ -1,4 +1,4 @@
-From hammerdb
+FROM hammerdb
 COPY build.tcl .
 COPY run.tcl .
 ENV TMP=\/tmp
