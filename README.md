@@ -292,37 +292,14 @@ Change directory ownership so MSSQL can edit filesystem
 chown 10001:10001 /mnt/db1
 ```
 
-Update the tpc-db.yaml file found under the mysql directory to reflect your setup. \
+Update the init-db.yaml file found under the SUT directory to reflect your setup. \
 Ensure the yaml file reflects your NIC physical function name under the NetworkAttachmentDefinition:
 ```
 "master": "ens2f0np0",
 ```
 You may also change the address under the NetworkAttachmentDefintion. Ensure that it is in the same subnet. \
 ```
-apiVersion: "k8s.cni.cncf.io/v1"
-kind: NetworkAttachmentDefinition
-metadata:
-  name: comm1
-spec:
-  config: '{
-          "cniVersion": "0.4.0",
-          "plugins": [
-            {
-              "type": "macvlan",
-              "capabilities": { "ips": true },
-              "master": "ens2f0np0",
-              "mode": "bridge",
-              "ipam": {
-                "type": "static",
-                "addresses": [
-                  {
-                    "address": "192.168.5.11/24"
-                  }
-                ]
-              }
-            }
-          ]
-  }'
+"address": "192.168.5.11/24"
 ```
 Ensure the yaml file reflects the name of your mount paths (do not change volumeMounts):
 ```
@@ -335,15 +312,22 @@ Ensure the yaml file reflects the name of your mount paths (do not change volume
           hostPath:
             path: /mnt/db1
 ```
-Launch the pod that will run a MySQL container listening at the specified address at port 3306:
+Launch the pod that will run a MySQL container listening at the specified address at port 1433:
 ```
-kubectl apply -f tpc-db.yaml
+kubectl apply -f init-db.yaml
 ```
-MySQL pod will restart in about 10 seconds in order to populate filesystem. This is normal.
 
 ## Setup HammerDB TPROC for Load Generator ##
 
-Unzip the HammerDB repository from tar file \
+Clone the HammerDB repo:
+```
+git clone https://github.com/TPC-Council/HammerDB.git
+```
+
+Checkout the following tag version:
+```
+git checkout b9336d9
+```
 
 Build the HammerDB Docker Image:
 ```
