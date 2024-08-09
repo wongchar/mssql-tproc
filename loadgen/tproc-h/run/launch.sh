@@ -6,7 +6,7 @@ then
   exit 2
 fi
 
-IMG=tpch:latest
+IMG=tpch:run
 DBPORT=1433
 SF=30
 TH=4
