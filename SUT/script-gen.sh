@@ -79,6 +79,8 @@ spec:
             value: "1"
           - name: MSSQL_SA_PASSWORD
             value: "Amd1234!!!!"
+          - name: MSSQL_MEMORY_LIMIT_MB
+            value: "20480"
         volumeMounts:
           - name: mssql${I}
             mountPath: /var/opt/mssql
