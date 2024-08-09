@@ -12,3 +12,18 @@ Check build.txt output for any errors and check status of build container:
 ```
 docker ps
 ```
+
+Build the TPROC-H Container Image to run the test:
+```
+docker build -t tpch:run run/.
+```
+
+Command to run the scaled test using the number of instances:
+```
+./launch.sh 16
+```
+
+Command to extract results:
+```
+./getresults 16
+```
