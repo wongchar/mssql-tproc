@@ -63,6 +63,25 @@ Confirm the mount points:
 lsblk
 ```
 
+- - - -
+
+## Setup network (RHEL) ##
+
+```
+nmcli connection show
+```
+
+```
+nmcli connection show 'Wired connection1'
+```
+Verify interface \
+Set static IP:
+```
+sudo nmcli connection mod 'Wired connection 1' \
+ipv4.method manual \
+ipv4.addresses 192.168.6.200/24 \
+connection.autoconnect yes
+```
 
 - - - -
 
