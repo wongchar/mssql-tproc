@@ -10,13 +10,13 @@ spec:
             {
               "type": "macvlan",
               "capabilities": { "ips": true },
-              "master": "ens2f0np0",
+              "master": "enp225s0f0np0",
               "mode": "bridge",
               "ipam": {
                 "type": "static",
                 "addresses": [
                   {
-                    "address": "192.168.5.11/24"
+                    "address": "192.168.5.10/24"
                   }
                 ]
               }
