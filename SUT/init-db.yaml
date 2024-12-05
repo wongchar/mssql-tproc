@@ -74,4 +74,4 @@ spec:
       volumes:
         - name: mssql
           hostPath:
-            path: /mnt/db1
+            path: /mnt1/db1
