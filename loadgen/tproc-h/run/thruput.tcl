@@ -28,7 +28,7 @@ diset tpch mssqls_update_sets 1
 print dict
 vuset logtotemp 1
 loadscript
-vuset vu 4
+vuset vu $::env(VU)
 vurun
 wait_vu
 vudestroy
